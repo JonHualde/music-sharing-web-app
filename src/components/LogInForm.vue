@@ -10,8 +10,18 @@
       <vee-field
         name="email"
         type="email"
-        class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                  duration-500 focus:outline-none focus:border-black rounded"
+        class="
+          block
+          w-full
+          py-1.5
+          px-3
+          text-gray-800
+          border border-gray-300
+          transition duration-500
+          focus:outline-none
+          focus:border-black
+          rounded
+        "
         placeholder="Enter Email"
       />
       <ErrorMessage class="text-red-600" name="email" />
@@ -22,16 +32,26 @@
       <vee-field
         name="password"
         type="password"
-        class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                  duration-500 focus:outline-none focus:border-black rounded"
+        class="
+          block
+          w-full
+          py-1.5
+          px-3
+          text-gray-800
+          border border-gray-300
+          transition
+          duration-500
+          focus:outline-none
+          focus:border-black
+          rounded
+        "
         placeholder="Password"
       />
       <ErrorMessage class="text-red-600" name="password" />
     </div>
     <button
       type="submit"
-      class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition
-                hover:bg-purple-700"
+      class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition hover:bg-purple-700"
       :disabled="log_in_submission"
     >
       Submit
@@ -66,9 +86,11 @@ export default {
         await this.$store.dispatch("logIn", values);
       } catch (error) {
         console.error(error);
+
         this.log_in_submission = false;
         this.log_alert_variant = "bg-red-500";
         this.log_alert_msg = `${error.message}`;
+
         return;
       }
 
