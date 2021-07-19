@@ -1,6 +1,8 @@
+/* eslint-disable */
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBERCcnJAcVhsJYNeNSHo2_4lqw1Ldlirw",
@@ -20,7 +22,11 @@ const auth = firebase.auth();
 // Access to the database
 const db = firebase.firestore();
 
+// Accessing the storage object for music uploading
+const storage = firebase.storage();
+
 // Access or create a new collection into the database
 const usersCollection = db.collection("users");
+const songsCollection = db.collection("songs");
 
-export { auth, db, usersCollection };
+export { auth, db, usersCollection, songsCollection, storage };
