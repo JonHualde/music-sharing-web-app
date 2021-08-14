@@ -65,30 +65,6 @@ export default {
   data() {
     return {
       tab: "login",
-      schema: {
-        name: "required|min:3|max:100|alpha_spaces",
-        email: "required|min:3|max:100|email",
-        age: "required|min_value:18|max_value:110",
-        password: "required|min:6|max:60",
-        confirm_password: "passwords_mismatch:@password|required|min:6|max:40",
-        country: "required|country_excluded:Antartica",
-        tos: "tos",
-      },
-      logInSchema: {
-        email: "required|min:3|max:100|email",
-        password: "required|min:6|max:60",
-      },
-      userData: {
-        country: "USA",
-      },
-      reg_in_submission: false,
-      reg_show_alert: false,
-      reg_alert_variant: "bg-blue-500",
-      reg_alert_msg: "Please wait, your account is being created..",
-      log_in_submission: false,
-      log_show_alert: false,
-      log_alert_variant: "bg-blue-500",
-      log_alert_msg: "We are logging you in, please wait..",
     };
   },
   computed: {
@@ -106,27 +82,6 @@ export default {
   },
   methods: {
     ...mapMutations(["toggleAuthModal", "toggleLogIn", "toggleRegistration"]),
-    register(values) {
-      this.reg_show_alert = true;
-      this.reg_in_submission = true;
-      this.reg_alert_variant = "bg-blue-500";
-      this.reg_alert_msg = "Please wait, your account is being created..";
-
-      this.reg_alert_variant = "bg-green-500";
-      this.reg_alert_msg = "Success! Your account has been created.";
-      console.log(values);
-    },
-    logIn(values) {
-      this.log_show_alert = true;
-      this.log_in_submission = true;
-      this.log_alert_variant = "bg-blue-500";
-      this.log_alert_msg = "We are logging you in, please wait";
-
-      this.log_alert_variant = "bg-green-500";
-      this.log_alert_msg = "Success! You are now logged in.";
-
-      console.log(values);
-    },
   },
 };
 </script>

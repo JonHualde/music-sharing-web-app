@@ -24,8 +24,6 @@ const routes = [
       requiresAuth: true,
     },
     beforeEnter: (to, from, next) => {
-      console.log("before enter");
-
       next();
     },
   },

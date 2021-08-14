@@ -98,7 +98,7 @@
       <ErrorMessage class="text-red-600" name="userType" />
     </div>
     <!-- TOS -->
-    <div class=" pl-6">
+    <div class="pl-6">
       <vee-field name="tos" type="checkbox" value="1" class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
       <label class="inline-block">Accept terms of service</label>
     </div>
