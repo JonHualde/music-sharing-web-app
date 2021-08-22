@@ -2,7 +2,7 @@
   <section class="container mx-auto mt-6">
     <div class="md:grid md:grid-cols-3 md:gap-4">
       <div class="col-span-1">
-        <MusicUpload ref="upload" />
+        <MusicUpload ref="upload" :addUploadedSong="addUploadedSong" />
       </div>
       <div class="col-span-2">
         <div class="bg-white rounded border border-gray-200 relative flex flex-col">
@@ -11,7 +11,15 @@
             <i class="fa fa-compact-disc float-right text-green-400 text-2xl"></i>
           </div>
           <div class="p-6">
-            <CompositionItem v-for="(song, i) in songs" :key="song.docID" :song="song" :updateSong="updateSong" :index="i" />
+            <CompositionItem
+              v-for="(song, i) in songs"
+              :key="song.docID"
+              :song="song"
+              :updateSong="updateSong"
+              :index="i"
+              :deleteExistingSong="deleteExistingSong"
+              :updateUnsavedFlag="updateUnsavedFlag"
+            />
           </div>
         </div>
       </div>
@@ -21,6 +29,7 @@
 
 <script>
 // import store from "@/store/store";
+/* eslint-disable */
 import MusicUpload from "@/components/Upload.vue";
 import CompositionItem from "@/components/CompositionItem.vue";
 import { songsCollection, auth } from "@/includes/firebase";
@@ -35,6 +44,7 @@ export default {
   data() {
     return {
       songs: [],
+      unsavedFlag: false,
     };
   },
   beforeRouteLeave(to, from, next) {
@@ -44,20 +54,35 @@ export default {
   async created() {
     const snapshot = await songsCollection.where("uid", "==", auth.currentUser.uid).get();
 
-    snapshot.forEach((document) => {
-      const song = {
-        ...document.data(),
-        docID: document.id,
-      };
-
-      this.songs.push(song);
-    });
+    snapshot.forEach(this.addUploadedSong);
   },
   methods: {
     updateSong(i, values) {
       this.songs[i].modified_name = values.modified_name;
       this.songs[i].genre = values.genre;
     },
+    deleteExistingSong(i) {
+      this.songs.splice(i, 1);
+    },
+    addUploadedSong(document) {
+      const song = {
+        ...document.data(),
+        docID: document.id,
+      };
+
+      this.songs.push(song);
+    },
+    updateUnsavedFlag(value) {
+      this.unsavedFlag = value;
+    },
+  },
+  beforeRouteLeave(to, from, next) {
+    if (!this.unsavedFlag) {
+      next();
+    } else {
+      const leave = confirm("You have unsaved changes. Are you sure you want to leave?");
+      next(leave);
+    }
   },
   // beforeRouteEnter(to, from, next) {
   //   if (store.state.userLoggedIn) {
