@@ -1,6 +1,22 @@
 export default {
-  beforeMount(el) {
+  beforeMount(el, binding) {
+    let iconClass = `fa fa-${binding.value} text-xl`;
+
+    if (binding.arg === "full") {
+      iconClass = binding.value;
+    }
+
+    // Modifiers are either true or false, we cannot assign value to them
+    if (binding.modifiers.right) {
+      iconClass += " float-right";
+    }
+    if (binding.modifiers.yellow) {
+      iconClass += " text-yellow-500";
+    } else {
+      iconClass += " text-green-400";
+    }
+
     // eslint-disable-next-line no-param-reassign
-    el.innerHTML += '<i class="fa fa-headphones-alt float-right text-green-400 text-xl"></i>';
+    el.innerHTML += `<i class="${iconClass}"></i>`;
   },
 };
