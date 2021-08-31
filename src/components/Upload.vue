@@ -57,6 +57,19 @@ export default {
       files.forEach((file) => {
         if (file.type !== "audio/mpeg") return;
 
+        if (!navigator.onLine) {
+          this.uploads.push({
+            task: {},
+            current_progress: 100,
+            name: file.name,
+            variant: "bg-red-400",
+            icon: "fas fa-times",
+            text_class: "text-red-400",
+          });
+
+          return;
+        }
+
         // music-sharing-app-15966.appspot.com + /songs
         const storageRef = storage.ref("songs");
 
@@ -72,8 +85,8 @@ export default {
             current_progress: 0,
             name: file.name,
             variant: "bg-blue-400",
-            icon: "fas fa-spinner fa-spin",
-            text_class: "",
+            icon: "fas fa-times",
+            text_class: "text-red-400",
           }) - 1;
 
         task.on(

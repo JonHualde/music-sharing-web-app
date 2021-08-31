@@ -7,7 +7,8 @@ import Icon from "./directives/icon";
 import "./assets/tailwind.css";
 import "./assets/main.css";
 import VeeValidationPlugin from "./includes/validation";
-import i18n from './i18n';
+import i18n from "./includes/i18n";
+import './registerServiceWorker';
 
 let app;
 

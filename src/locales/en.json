@@ -1,3 +1,12 @@
 {
-  "message": "hello i18n !!"
+  "home": {
+    "title": "Listen to Great Music!"
+  },
+  "register": {
+    "TOS": "Terms of Services",
+    "accept": "I accept Music's {0}"
+  },
+  "songPage": {
+    "comment_count": "No comments | 1 comment | {count} comments"
+  }
 }

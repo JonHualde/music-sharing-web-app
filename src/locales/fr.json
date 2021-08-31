@@ -1,0 +1,12 @@
+{
+  "home": {
+    "title": "Créer et partagez votre musique au monde !"
+  },
+  "register": {
+    "TOS": "conditions d'utilisations",
+    "accept": "J'accepte les {0}"
+  },
+  "songPage": {
+    "comment_count": "Pas de commentaire | 1 commentaire | {count} commentaires"
+  }
+}

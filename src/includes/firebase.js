@@ -25,6 +25,9 @@ const db = firebase.firestore();
 // Accessing the storage object for music uploading
 const storage = firebase.storage();
 
+// Adding persistence
+db.enablePersistence().catch((err) => console.error("Firebase persistence error: ", err));
+
 // Access or create a new collection into the database
 const usersCollection = db.collection("users");
 const songsCollection = db.collection("songs");
