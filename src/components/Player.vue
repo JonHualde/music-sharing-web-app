@@ -45,11 +45,16 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["playing"]),
-    ...mapState(["duration", "seek", "playerProgress", "currentSong"]),
+    ...mapGetters("player", ["playing"]),
+    ...mapState({
+      duration: (state) => state.player.duration,
+      seek: (state) => state.player.seek,
+      playerProgress: (state) => state.player.playerProgress,
+      currentSong: (state) => state.player.currentSong,
+    }),
   },
   methods: {
-    ...mapActions(["toggleAudio", "updateSeek"]),
+    ...mapActions("player", ["toggleAudio", "updateSeek"]),
   },
 };
 </script>

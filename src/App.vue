@@ -22,7 +22,7 @@ export default {
   name: "App",
   components: { Header, AuthModal, Player },
   created() {
-    this.$store.dispatch("init_login");
+    this.$store.dispatch("auth/init_login");
   },
 };
 </script>

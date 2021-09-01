@@ -76,12 +76,16 @@ export default {
     // ...mapGetters(["authModalShow", "showLogInForm", "showRegistrationForm"]),
     // -------------------- STATES --------------------
     // Better for retrieving a state property
-    ...mapState(["authModalShown"]),
+    // ...mapState(["authModalShown"]),
     // -------------------- STATES with ALIASES --------------------
     // ...mapState({ modal: "authModalShow" }),
+    // -------------------- STATES with MODULES --------------------
+    ...mapState({
+      authModalShown: (state) => state.auth.authModalShown,
+    }),
   },
   methods: {
-    ...mapMutations(["toggleAuthModal", "toggleLogIn", "toggleRegistration"]),
+    ...mapMutations("auth", ["toggleAuthModal"]),
   },
 };
 </script>

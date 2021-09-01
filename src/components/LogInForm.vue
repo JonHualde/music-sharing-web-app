@@ -83,7 +83,7 @@ export default {
       this.log_alert_msg = "We are logging you in, please wait";
 
       try {
-        await this.$store.dispatch("logIn", values);
+        await this.$store.dispatch("auth/logIn", values);
       } catch (error) {
         console.error(error);
 

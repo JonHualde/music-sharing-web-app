@@ -8,7 +8,8 @@ import "./assets/tailwind.css";
 import "./assets/main.css";
 import VeeValidationPlugin from "./includes/validation";
 import i18n from "./includes/i18n";
-import './registerServiceWorker';
+import "./registerServiceWorker";
+import GlobalComponents from "./includes/_globals";
 
 let app;
 
@@ -20,6 +21,7 @@ auth.onAuthStateChanged(() => {
     app.use(store);
     app.use(router);
     app.use(VeeValidationPlugin);
+    app.use(GlobalComponents);
     app.directive("icon", Icon);
 
     app.mount("#app");

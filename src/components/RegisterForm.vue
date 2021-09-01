@@ -154,7 +154,8 @@ export default {
        * Create a new user in the database
        */
       try {
-        await this.$store.dispatch("register", values);
+        // $store object is accessible from any component
+        await this.$store.dispatch("auth/register", values);
       } catch (error) {
         console.error(error);
         this.reg_in_submission = false;

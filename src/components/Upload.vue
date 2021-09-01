@@ -58,6 +58,7 @@ export default {
         if (file.type !== "audio/mpeg") return;
 
         if (!navigator.onLine) {
+          console.log("inside");
           this.uploads.push({
             task: {},
             current_progress: 100,
@@ -85,8 +86,8 @@ export default {
             current_progress: 0,
             name: file.name,
             variant: "bg-blue-400",
-            icon: "fas fa-times",
-            text_class: "text-red-400",
+            icon: "fas fa-spinner fa-spin",
+            text_class: "",
           }) - 1;
 
         task.on(

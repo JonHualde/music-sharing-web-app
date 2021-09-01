@@ -1,6 +1,8 @@
 <template>
   <main>
     <Introduction />
+    <!-- Component registered globally in globals.js -->
+    <!-- <base-button /> -->
     <!-- Main Content -->
     <section class="container mx-auto">
       <div class="bg-white rounded border border-gray-200 relative flex flex-col">

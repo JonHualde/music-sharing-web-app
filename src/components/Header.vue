@@ -41,15 +41,17 @@ import { mapMutations, mapState } from "vuex";
 export default {
   name: "Header",
   computed: {
-    ...mapState(["userLoggedIn"]),
+    ...mapState({
+      userLoggedIn: (state) => state.auth.userLoggedIn,
+    }),
     currentLocale() {
       return this.$i18n.locale === "fr" ? "English" : "Français";
     },
   },
   methods: {
-    ...mapMutations(["toggleAuthModal", "toggleAuth"]),
+    ...mapMutations("auth", ["toggleAuthModal", "toggleAuth"]),
     signOut() {
-      this.$store.dispatch("signOut");
+      this.$store.dispatch("auth/signOut");
 
       if (this.$route.meta.requiresAuth) {
         this.$router.push({ name: "home" });

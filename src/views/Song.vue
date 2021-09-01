@@ -109,8 +109,10 @@ export default {
     };
   },
   computed: {
-    ...mapState(["userLoggedIn"]),
-    ...mapGetters(["playing"]),
+    ...mapState({
+      userLoggedIn: (state) => state.auth.userLoggedIn,
+    }),
+    ...mapGetters("player", ["playing"]),
     sortedComments() {
       return this.comments.slice().sort((a, b) => {
         // Latest to oldest
@@ -139,7 +141,7 @@ export default {
     this.getComments();
   },
   methods: {
-    ...mapActions(["newSong"]),
+    ...mapActions("player", ["newSong"]),
     async addComment(values, context) {
       this.comment_in_submission = true;
       this.comment_show_alert = true;
